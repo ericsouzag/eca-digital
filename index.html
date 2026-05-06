@@ -1,0 +1,964 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Uso de Imagem, LGPD e Proteção Digital na Escola — Referências</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --azul: #0A1F44;
+    --azul-medio: #0D2E6B;
+    --azul-claro: #1A4FA0;
+    --amarelo: #FFD60A;
+    --amarelo-suave: #FFF3A3;
+    --branco: #F8F9FF;
+    --cinza: #8899BB;
+    --texto: #E8EEFF;
+    --card-bg: rgba(255,255,255,0.04);
+    --card-borda: rgba(255, 214, 10, 0.15);
+    --vermelho: #FF4444;
+    --verde: #22C55E;
+    --laranja: #F59E0B;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background-color: var(--azul);
+    color: var(--texto);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* ─── NAVBAR ─── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    background: rgba(10, 31, 68, 0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(255, 214, 10, 0.2);
+    padding: 0 clamp(1rem, 4vw, 3rem);
+  }
+  .nav-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 60px;
+    gap: 1rem;
+  }
+  .nav-logo {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 1rem;
+    color: var(--amarelo);
+    text-decoration: none;
+    white-space: nowrap;
+    letter-spacing: -0.02em;
+  }
+  .nav-links {
+    display: flex;
+    gap: 0.2rem;
+    list-style: none;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+  }
+  .nav-links a {
+    color: var(--cinza);
+    text-decoration: none;
+    font-size: 0.76rem;
+    font-weight: 400;
+    padding: 0.3rem 0.65rem;
+    border-radius: 6px;
+    transition: all 0.2s;
+    letter-spacing: 0.02em;
+    white-space: nowrap;
+  }
+  .nav-links a:hover { color: var(--amarelo); background: rgba(255,214,10,0.08); }
+
+  /* ─── HERO ─── */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    padding: 100px clamp(1.5rem, 5vw, 4rem) 80px;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse 80% 60% at 15% 50%, rgba(26, 79, 160, 0.35) 0%, transparent 65%),
+      radial-gradient(ellipse 50% 40% at 85% 30%, rgba(255, 214, 10, 0.08) 0%, transparent 60%);
+    pointer-events: none;
+  }
+  .hero-grid {
+    position: absolute; inset: 0;
+    background-image:
+      linear-gradient(rgba(255,214,10,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,214,10,0.04) 1px, transparent 1px);
+    background-size: 60px 60px;
+    mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 0%, transparent 75%);
+    pointer-events: none;
+  }
+  .hero-content { max-width: 820px; position: relative; z-index: 2; text-align: center; }
+  .hero-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: rgba(255, 214, 10, 0.1);
+    border: 1px solid rgba(255, 214, 10, 0.3);
+    border-radius: 100px;
+    padding: 0.4rem 1.1rem;
+    font-size: 0.78rem;
+    color: var(--amarelo);
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 2rem;
+  }
+  .hero-tag::before { content: ''; width: 6px; height: 6px; background: var(--amarelo); border-radius: 50%; }
+  h1 {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: clamp(2.2rem, 6vw, 3.8rem);
+    line-height: 1.1;
+    letter-spacing: -0.03em;
+    color: #fff;
+    margin-bottom: 1rem;
+  }
+  h1 span { color: var(--amarelo); display: block; }
+  .hero-sub { font-size: clamp(1rem, 2vw, 1.15rem); color: var(--cinza); max-width: 580px; margin: 0 auto 2.5rem; }
+  .hero-desc {
+    font-size: 0.92rem;
+    color: rgba(232, 238, 255, 0.6);
+    max-width: 640px;
+    margin: 0 auto;
+    padding: 1.5rem;
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 16px;
+    line-height: 1.75;
+  }
+  .hero-badges {
+    display: flex;
+    justify-content: center;
+    gap: 0.6rem;
+    flex-wrap: wrap;
+    margin-top: 2rem;
+  }
+  .badge {
+    font-size: 0.72rem;
+    font-weight: 500;
+    padding: 0.3rem 0.8rem;
+    border-radius: 100px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+  .badge-lei { background: rgba(26,79,160,0.25); border: 1px solid rgba(26,79,160,0.4); color: #90B4FF; }
+  .badge-caso { background: rgba(245,158,11,0.15); border: 1px solid rgba(245,158,11,0.3); color: #FCD34D; }
+  .badge-dado { background: rgba(34,197,94,0.12); border: 1px solid rgba(34,197,94,0.25); color: #6EE7A0; }
+
+  .scroll-hint {
+    margin-top: 3rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    color: rgba(255,214,10,0.5);
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+  .scroll-hint::after {
+    content: '';
+    width: 1px; height: 50px;
+    background: linear-gradient(to bottom, rgba(255,214,10,0.4), transparent);
+    animation: pulseDown 1.5s ease-in-out infinite;
+  }
+  @keyframes pulseDown {
+    0%, 100% { opacity: 0.4; transform: translateY(0); }
+    50% { opacity: 1; transform: translateY(6px); }
+  }
+
+  /* ─── MAIN ─── */
+  main { max-width: 1200px; margin: 0 auto; padding: 0 clamp(1.5rem, 4vw, 3rem) 80px; }
+
+  /* ─── SECTIONS ─── */
+  .secao { margin-bottom: 80px; scroll-margin-top: 80px; }
+  .secao-header {
+    display: flex;
+    align-items: center;
+    gap: 1.2rem;
+    margin-bottom: 2rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid rgba(255, 214, 10, 0.15);
+  }
+  .secao-icone {
+    width: 52px; height: 52px;
+    border-radius: 14px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.5rem;
+    flex-shrink: 0;
+    position: relative;
+  }
+  .secao-icone::after {
+    content: '';
+    position: absolute; inset: -1px;
+    border-radius: 15px;
+    background: linear-gradient(135deg, rgba(255,214,10,0.5), rgba(255,214,10,0));
+    z-index: -1;
+  }
+  .s1 { background: rgba(26, 79, 160, 0.4); }
+  .s2 { background: rgba(26, 79, 160, 0.4); }
+  .s3 { background: rgba(245, 158, 11, 0.25); }
+  .s4 { background: rgba(34, 197, 94, 0.2); }
+  .s5 { background: rgba(140, 40, 40, 0.3); }
+  .s6 { background: rgba(80, 60, 140, 0.3); }
+  .s7 { background: rgba(20, 100, 60, 0.3); }
+
+  .secao-num { font-family: 'Syne', sans-serif; font-size: 0.7rem; font-weight: 600; color: var(--amarelo); letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 0.1rem; }
+  .secao-titulo { font-family: 'Syne', sans-serif; font-weight: 700; font-size: clamp(1.3rem, 3vw, 1.75rem); color: #fff; letter-spacing: -0.02em; }
+
+  /* ─── CARDS ─── */
+  .cards-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 340px), 1fr)); gap: 1.2rem; }
+
+  .card {
+    background: var(--card-bg);
+    border: 1px solid var(--card-borda);
+    border-radius: 16px;
+    padding: 1.5rem;
+    transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+    position: relative;
+    overflow: hidden;
+  }
+  .card::before {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--amarelo), transparent);
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+  .card:hover { transform: translateY(-4px); border-color: rgba(255, 214, 10, 0.35); background: rgba(255,255,255,0.06); box-shadow: 0 20px 40px rgba(0,0,0,0.3); }
+  .card:hover::before { opacity: 1; }
+
+  /* card de CASO REAL */
+  .card-caso { border-color: rgba(245, 158, 11, 0.25); background: rgba(245, 158, 11, 0.04); }
+  .card-caso::before { background: linear-gradient(90deg, var(--laranja), transparent); }
+  .card-caso:hover { border-color: rgba(245, 158, 11, 0.5); background: rgba(245, 158, 11, 0.08); }
+
+  /* card de DADO ESTATÍSTICO */
+  .card-dado { border-color: rgba(34, 197, 94, 0.2); background: rgba(34, 197, 94, 0.03); }
+  .card-dado::before { background: linear-gradient(90deg, var(--verde), transparent); }
+  .card-dado:hover { border-color: rgba(34, 197, 94, 0.4); }
+
+  .card-tipo {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.68rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    border-radius: 100px;
+    padding: 0.25rem 0.75rem;
+    margin-bottom: 1rem;
+  }
+  .tipo-lei { color: #90B4FF; background: rgba(26,79,160,0.2); border: 1px solid rgba(26,79,160,0.3); }
+  .tipo-caso { color: #FCD34D; background: rgba(245,158,11,0.12); border: 1px solid rgba(245,158,11,0.25); }
+  .tipo-dado { color: #6EE7A0; background: rgba(34,197,94,0.1); border: 1px solid rgba(34,197,94,0.2); }
+  .tipo-org { color: var(--amarelo); background: rgba(255,214,10,0.08); border: 1px solid rgba(255,214,10,0.15); }
+  .tipo-artigo { color: #D8B4FE; background: rgba(139,92,246,0.1); border: 1px solid rgba(139,92,246,0.2); }
+  .tipo-video { color: #FCA5A5; background: rgba(239,68,68,0.1); border: 1px solid rgba(239,68,68,0.2); }
+
+  .card-autor { font-family: 'Syne', sans-serif; font-size: 1rem; font-weight: 700; color: #fff; margin-bottom: 0.4rem; line-height: 1.3; }
+  .card-obra { font-size: 0.85rem; font-style: italic; color: rgba(232,238,255,0.6); margin-bottom: 0.75rem; }
+  .card-desc { font-size: 0.88rem; color: rgba(232,238,255,0.75); line-height: 1.6; margin-bottom: 1rem; }
+
+  .card-citacao {
+    background: rgba(255, 214, 10, 0.05);
+    border-left: 3px solid var(--amarelo);
+    border-radius: 0 8px 8px 0;
+    padding: 0.75rem 1rem;
+    font-size: 0.83rem;
+    font-style: italic;
+    color: rgba(255,243,163,0.85);
+    margin-bottom: 1rem;
+    line-height: 1.55;
+  }
+  .card-citacao-caso {
+    background: rgba(245, 158, 11, 0.08);
+    border-left: 3px solid var(--laranja);
+    border-radius: 0 8px 8px 0;
+    padding: 0.75rem 1rem;
+    font-size: 0.83rem;
+    color: rgba(252,211,77,0.9);
+    margin-bottom: 1rem;
+    line-height: 1.55;
+  }
+
+  .card-resultado {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.5rem;
+    background: rgba(255,68,68,0.08);
+    border: 1px solid rgba(255,68,68,0.2);
+    border-radius: 8px;
+    padding: 0.6rem 0.85rem;
+    font-size: 0.8rem;
+    color: #FCA5A5;
+    margin-bottom: 1rem;
+    line-height: 1.5;
+  }
+  .card-resultado strong { color: #FF6B6B; }
+
+  .card-links { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: auto; }
+  .card-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.78rem;
+    font-weight: 500;
+    color: var(--azul-claro);
+    background: rgba(26, 79, 160, 0.15);
+    border: 1px solid rgba(26, 79, 160, 0.3);
+    padding: 0.4rem 0.85rem;
+    border-radius: 100px;
+    text-decoration: none;
+    transition: all 0.2s;
+  }
+  .card-link:hover { background: rgba(255,214,10,0.1); border-color: rgba(255,214,10,0.4); color: var(--amarelo); transform: translateX(2px); }
+  .card-link svg { width: 12px; height: 12px; flex-shrink: 0; }
+
+  /* ─── DIVIDER ─── */
+  .divider { height: 1px; background: linear-gradient(90deg, transparent, rgba(255,214,10,0.2), transparent); margin: 80px 0; }
+
+  /* ─── FOOTER ─── */
+  footer {
+    background: rgba(0,0,0,0.3);
+    border-top: 1px solid rgba(255,214,10,0.1);
+    padding: 3rem clamp(1.5rem, 4vw, 3rem);
+    text-align: center;
+  }
+  .footer-inner { max-width: 800px; margin: 0 auto; }
+  .footer-logo { font-family: 'Syne', sans-serif; font-size: 1.5rem; font-weight: 800; color: var(--amarelo); margin-bottom: 0.5rem; letter-spacing: -0.02em; }
+  .footer-prof { font-size: 0.95rem; color: var(--cinza); margin-bottom: 0.3rem; }
+  .footer-year { font-size: 0.8rem; color: rgba(136, 153, 187, 0.5); margin-bottom: 2rem; }
+  .footer-frase { font-size: clamp(1rem, 2.5vw, 1.2rem); font-style: italic; color: rgba(232,238,255,0.5); line-height: 1.6; max-width: 600px; margin: 0 auto; }
+  .footer-frase strong { color: var(--amarelo); font-style: normal; }
+
+  @media (max-width: 700px) {
+    .nav-links { display: none; }
+    .cards-grid { grid-template-columns: 1fr; }
+  }
+
+  /* ─── LINK SVG ─── */
+  .ext { display: inline; }
+</style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav>
+  <div class="nav-inner">
+    <a href="#hero" class="nav-logo">Imagem & LGPD na Escola</a>
+    <ul class="nav-links">
+      <li><a href="#legislacao">Legislação</a></li>
+      <li><a href="#casos">Casos Reais</a></li>
+      <li><a href="#dados">Dados & Riscos</a></li>
+      <li><a href="#orgaos">Órgãos Oficiais</a></li>
+      <li><a href="#pratica">Na Prática</a></li>
+      <li><a href="#artigos">Artigos</a></li>
+      <li><a href="#consentimento">Consentimento</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="hero">
+  <div class="hero-grid"></div>
+  <div class="hero-content">
+    <div class="hero-tag">Palestra · Referências e Fontes</div>
+    <h1>Uso de Imagem, LGPD e <span>Proteção Digital na Escola</span></h1>
+    <p class="hero-sub">Referências, casos reais e fontes utilizadas na palestra — destinado a professores e equipe escolar</p>
+    <div class="hero-desc">
+      Esta página reúne todas as leis, casos julgados, dados estatísticos e fontes citadas durante a palestra. Acesse diretamente cada referência para aprofundar seu conhecimento e ter segurança jurídica nas suas práticas cotidianas.
+    </div>
+    <div class="hero-badges">
+      <span class="badge badge-lei">⚖️ Legislação</span>
+      <span class="badge badge-caso">📋 Casos Reais</span>
+      <span class="badge badge-dado">📊 Dados Atualizados</span>
+    </div>
+    <div class="scroll-hint">Role para explorar</div>
+  </div>
+</section>
+
+<main>
+
+  <!-- ══════════ SEÇÃO 1 — LEGISLAÇÃO ══════════ -->
+  <section class="secao" id="legislacao">
+    <div class="secao-header">
+      <div class="secao-icone s1">⚖️</div>
+      <div>
+        <div class="secao-num">Seção 01</div>
+        <h2 class="secao-titulo">Legislação Aplicável</h2>
+      </div>
+    </div>
+    <div class="cards-grid">
+
+      <div class="card">
+        <span class="card-tipo tipo-lei">📜 Lei Federal</span>
+        <div class="card-autor">ECA — Estatuto da Criança e do Adolescente</div>
+        <div class="card-obra">Lei nº 8.069/1990</div>
+        <div class="card-desc">Base fundamental de proteção da criança no Brasil. O Art. 17 garante explicitamente "a preservação da imagem, da identidade e da autonomia" como direito inviolável. O Art. 18 determina que é dever de todos — inclusive da escola — zelar pela dignidade do aluno.</div>
+        <div class="card-citacao">O direito ao respeito consiste na inviolabilidade da integridade física, psíquica e moral da criança e do adolescente, abrangendo a preservação da imagem, da identidade, da autonomia… (Art. 17)</div>
+        <div class="card-links">
+          <a class="card-link" href="https://www.planalto.gov.br/ccivil_03/leis/l8069.htm" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+            Planalto.gov.br
+          </a>
+        </div>
+      </div>
+
+      <div class="card">
+        <span class="card-tipo tipo-lei">📜 Lei Federal</span>
+        <div class="card-autor">LGPD — Lei Geral de Proteção de Dados</div>
+        <div class="card-obra">Lei nº 13.709/2018</div>
+        <div class="card-desc">Define imagem como dado pessoal e estabelece proteção reforçada para dados de crianças. O Art. 14 exige consentimento específico dos responsáveis. O Art. 8º §5º garante que o consentimento pode ser revogado a qualquer momento, gratuitamente.</div>
+        <div class="card-citacao">O tratamento de dados pessoais de crianças deverá ser realizado com consentimento específico e em destaque dado por pelo menos um dos pais ou pelo responsável legal. (Art. 14, §1º)</div>
+        <div class="card-links">
+          <a class="card-link" href="https://www2.camara.leg.br/legin/fed/lei/2018/lei-13709-14-agosto-2018-787077-publicacaooriginal-156212-pl.html" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+            Câmara dos Deputados
+          </a>
+          <a class="card-link" href="https://www.planalto.gov.br/ccivil_03/_ato2015-2018/2018/lei/l13709.htm" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+            Planalto.gov.br
+          </a>
+        </div>
+      </div>
+
+      <div class="card">
+        <span class="card-tipo tipo-lei">📜 Lei Federal</span>
+        <div class="card-autor">ECA Digital</div>
+        <div class="card-obra">Lei nº 15.211/2025</div>
+        <div class="card-desc">Atualiza o ECA para o ambiente digital. Obriga "privacidade por padrão" em serviços usados por crianças, exige controle parental ativo e determina que plataformas removam imediatamente conteúdos que violem direitos infantis — sem precisar de ordem judicial.</div>
+        <div class="card-citacao">Proceder à retirada de conteúdo que viola direitos de crianças e adolescentes assim que forem comunicados, independentemente de ordem judicial. (Art. 29)</div>
+        <div class="card-links">
+          <a class="card-link" href="https://www2.camara.leg.br/legin/fed/lei/2025/lei-15211-17-setembro-2025-797997-publicacaooriginal-176498-pl.html" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+            Câmara dos Deputados
+          </a>
+        </div>
+      </div>
+
+      <div class="card">
+        <span class="card-tipo tipo-lei">📜 Constituição Federal</span>
+        <div class="card-autor">Constituição Federal de 1988</div>
+        <div class="card-obra">Art. 5º, inciso X</div>
+        <div class="card-desc">Fundamento máximo da proteção de imagem no Brasil. Garante inviolabilidade da imagem e assegura indenização por dano material ou moral em caso de uso não autorizado — base para todas as ações judiciais envolvendo imagem de alunos.</div>
+        <div class="card-citacao">São invioláveis a intimidade, a vida privada, a honra e a imagem das pessoas, assegurado o direito a indenização pelo dano material ou moral decorrente de sua violação.</div>
+        <div class="card-links">
+          <a class="card-link" href="https://www.planalto.gov.br/ccivil_03/constituicao/constituicao.htm" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+            Constituição Federal
+          </a>
+        </div>
+      </div>
+
+      <div class="card">
+        <span class="card-tipo tipo-lei">📜 Lei Federal</span>
+        <div class="card-autor">Código Civil Brasileiro</div>
+        <div class="card-obra">Lei nº 10.406/2002 — Art. 20</div>
+        <div class="card-desc">Determina que a utilização da imagem de alguém para fins comerciais ou publicitários só pode ocorrer com autorização expressa do titular. A violação garante direito à remoção da imagem e indenização por danos morais e materiais.</div>
+        <div class="card-links">
+          <a class="card-link" href="https://www.planalto.gov.br/ccivil_03/leis/2002/l10406compilada.htm" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+            Código Civil — Planalto
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ══════════ SEÇÃO 2 — CASOS REAIS ══════════ -->
+  <section class="secao" id="casos">
+    <div class="secao-header">
+      <div class="secao-icone s3">📋</div>
+      <div>
+        <div class="secao-num">Seção 02</div>
+        <h2 class="secao-titulo">Casos Reais Julgados pela Justiça</h2>
+      </div>
+    </div>
+    <div class="cards-grid">
+
+      <div class="card card-caso">
+        <span class="card-tipo tipo-caso">⚖️ Caso Real · TJDFT 2025</span>
+        <div class="card-autor">Escola condenada após usar imagem pós-revogação</div>
+        <div class="card-obra">6º Juizado Especial Cível de Brasília — 2025</div>
+        <div class="card-desc">Aluno solicitou formalmente, em outubro de 2024, o cancelamento da autorização de uso de imagem. A escola confirmou o atendimento, mas em janeiro de 2025 publicou foto dele em postagem nas redes sociais vinculada à divulgação institucional.</div>
+        <div class="card-citacao-caso">O tribunal destacou que a escola tinha ciência de que não poderia mais usar a imagem e que a postagem teve objetivo publicitário, ao associar a foto à qualidade do ensino para atrair novos alunos.</div>
+        <div class="card-resultado"><strong>Resultado:</strong> Condenação ao pagamento de indenização por danos morais. Direito à imagem é protegido como direito da personalidade — violação gera obrigação automática de reparação.</div>
+        <div class="card-links">
+          <a class="card-link" href="https://tribunademinas.com.br/noticias/brasil-e-mundo/01-09-2025/escola-e-condenada-por-uso-indevido-de-imagem-de-estudante-em-postagem-comercial.html" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+            Tribuna de Minas — Set. 2025
+          </a>
+        </div>
+      </div>
+
+      <div class="card card-caso">
+        <span class="card-tipo tipo-caso">⚖️ Caso Real · TJDFT 2021</span>
+        <div class="card-autor">Escola condenada por cláusula abusiva de imagem</div>
+        <div class="card-obra">2ª Vara Cível de Ceilândia — R$ 8.000 de indenização</div>
+        <div class="card-desc">Escola utilizou imagem de aluna em campanha publicitária com base em cláusula genérica do contrato de matrícula que autorizava "ceder, gratuitamente, direito de imagem para constar em campanhas institucionais ou publicitárias".</div>
+        <div class="card-citacao-caso">A cláusula de cessão gratuita de direito de imagem deveria ser destacada e em separado do contrato de adesão. Cláusulas genéricas são nulas perante a LGPD.</div>
+        <div class="card-resultado"><strong>Resultado:</strong> Cláusula declarada nula. Escola condenada a pagar R$ 8.000 por danos morais. Precedente: autorização genérica no contrato de matrícula não tem validade jurídica.</div>
+        <div class="card-links">
+          <a class="card-link" href="https://www.tjdft.jus.br/institucional/imprensa/noticias/2021/janeiro/justica-condena-escola-por-clausula-abusiva-para-uso-de-imagem-de-aluno" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+            TJDFT — Nota Oficial
+          </a>
+        </div>
+      </div>
+
+      <div class="card card-caso">
+        <span class="card-tipo tipo-caso">⚖️ Caso Real · STJ</span>
+        <div class="card-autor">STJ: Dano moral presumido por uso indevido de imagem</div>
+        <div class="card-obra">Superior Tribunal de Justiça — Entendimento consolidado</div>
+        <div class="card-desc">O STJ consolidou o entendimento de que o uso indevido de imagem gera dano moral presumido — ou seja, não é necessário provar que houve prejuízo. A exposição não autorizada, por si só, já configura a obrigação de reparação.</div>
+        <div class="card-citacao-caso">Situações de monetização ou ganho de visibilidade agravam ainda mais o risco jurídico e, em alguns casos, podem exigir até alvará judicial, mesmo com autorização dos pais.</div>
+        <div class="card-resultado"><strong>Impacto para escolas:</strong> Professor que viraliza com vídeo de aluno pode responder civilmente mesmo que a intenção fosse positiva. A escola responde solidariamente por falha de treinamento e ausência de protocolos.</div>
+        <div class="card-links">
+          <a class="card-link" href="https://infonewss.com/professor-nao-pode-publicar-imagem-ou-voz-de-aluno-sem-autorizacao-alerta-especialista/" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+            Info Newss — Fev. 2026
+          </a>
+        </div>
+      </div>
+
+      <div class="card card-caso">
+        <span class="card-tipo tipo-caso">⚖️ Caso Real · Escola Particular</span>
+        <div class="card-autor">Professor demitido por guardar fotos de alunos</div>
+        <div class="card-obra">Caso documentado — responsabilidade dupla</div>
+        <div class="card-desc">Professor armazenava imagens de alunos em dispositivos pessoais sem qualquer autorização formal dos responsáveis. A escola foi acionada e o profissional foi demitido após investigação interna. A escola também respondeu por ausência de protocolos de proteção de dados.</div>
+        <div class="card-resultado"><strong>Resultado:</strong> Demissão do professor e responsabilização civil da escola por falha de orientação, ausência de protocolos e falta de treinamento adequado da equipe.</div>
+        <div class="card-links">
+          <a class="card-link" href="https://www.machertecnologia.com.br/lgpd-escolas-instituicoes-ensino/" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+            LGPD para Escolas — Macher
+          </a>
+        </div>
+      </div>
+
+      <div class="card card-caso">
+        <span class="card-tipo tipo-caso">⚖️ Jurisprudência</span>
+        <div class="card-autor">Escola indeniza ex-aluna por uso em propaganda</div>
+        <div class="card-obra">TJ — Indenização por danos morais: R$ 7.000</div>
+        <div class="card-desc">Escola utilizou imagem de ex-aluna sem autorização válida em material publicitário. Contrato continha cláusula genérica, declarada nula por não atender aos requisitos de destaque e especificidade exigidos pela legislação consumerista e pela LGPD.</div>
+        <div class="card-resultado"><strong>Resultado:</strong> Condenação ao pagamento de R$ 7.000 por danos morais. Estabeleceu precedente: cláusula genérica no contrato de matrícula não vale como autorização de uso de imagem.</div>
+        <div class="card-links">
+          <a class="card-link" href="https://www.jusbrasil.com.br/jurisprudencia/busca?q=utiliza%C3%A7%C3%A3o+de+imagem+de+aluno" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+            Jusbrasil — Jurisprudência
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ══════════ SEÇÃO 3 — DADOS & RISCOS ══════════ -->
+  <section class="secao" id="dados">
+    <div class="secao-header">
+      <div class="secao-icone s4">📊</div>
+      <div>
+        <div class="secao-num">Seção 03</div>
+        <h2 class="secao-titulo">Dados Estatísticos & Riscos Reais</h2>
+      </div>
+    </div>
+    <div class="cards-grid">
+
+      <div class="card card-dado">
+        <span class="card-tipo tipo-dado">📊 Dado Oficial · 2024</span>
+        <div class="card-autor">593 mil denúncias em um ano — Brasil</div>
+        <div class="card-obra">Centro Nacional para Crianças Desaparecidas e Exploradas (NCMEC) · 2024</div>
+        <div class="card-desc">Em 2024, o Brasil registrou 593 mil denúncias de exploração e abuso sexual infantil online — o equivalente a uma denúncia por minuto. A exposição indevida de imagens nas redes sociais é uma das principais portas de entrada para esse tipo de risco.</div>
+        <div class="card-links">
+          <a class="card-link" href="https://agenciabrasil.ebc.com.br/radioagencia-nacional/geral/audio/2026-02/dia-da-internet-segura-alerta-para-riscos-do-sharenting" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+            Rádio Agência Nacional · Fev. 2026
+          </a>
+        </div>
+      </div>
+
+      <div class="card card-dado">
+        <span class="card-tipo tipo-dado">📊 Pesquisa · CGI.br 2024</span>
+        <div class="card-autor">TIC Kids Online Brasil — 88% nas redes sociais</div>
+        <div class="card-obra">Comitê Gestor da Internet no Brasil · 2024</div>
+        <div class="card-desc">88% dos jovens brasileiros de 9 a 17 anos possuem perfis em plataformas digitais. O Instagram lidera o acesso, seguido por YouTube e TikTok. Houve crescimento expressivo do acesso às redes sociais na primeira infância entre 2023 e 2025.</div>
+        <div class="card-links">
+          <a class="card-link" href="https://www.migalhas.com.br/coluna/migalhas-de-responsabilidade-civil/442134/oversharenting-e-responsabilidade-civil-dos-pais-nas-redes-sociais" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+            Migalhas · Out. 2025
+          </a>
+        </div>
+      </div>
+
+      <div class="card card-dado">
+        <span class="card-tipo tipo-dado">🔬 Relatório · Human Rights Watch 2024</span>
+        <div class="card-autor">Fotos de crianças brasileiras usadas para treinar IA</div>
+        <div class="card-obra">Human Rights Watch — Relatório de junho de 2024</div>
+        <div class="card-desc">A HRW identificou que mais de 170 fotos de crianças e adolescentes brasileiros de pelo menos 10 estados foram inseridas, sem autorização, no banco de dados LAION-5B — usado para treinar ferramentas de IA. As fotos incluíam nascimentos, festas de aniversário e apresentações escolares, algumas datando dos anos 1990.</div>
+        <div class="card-citacao">O treinamento com fotos de crianças reais permite que modelos de IA criem clones convincentes de qualquer criança, com base em um punhado de fotos ou até mesmo uma única imagem.</div>
+        <div class="card-links">
+          <a class="card-link" href="https://agenciabrasil.ebc.com.br/direitos-humanos/noticia/2024-06/fotos-de-criancas-brasileiras-sao-usadas-por-ia-de-forma-indevida" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+            Agência Brasil · Jun. 2024
+          </a>
+          <a class="card-link" href="https://www.hrw.org/pt/news/2024/09/12/brazil-submission-un-committee-rights-child" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+            Human Rights Watch
+          </a>
+        </div>
+      </div>
+
+      <div class="card card-dado">
+        <span class="card-tipo tipo-dado">📊 América Latina · 2024</span>
+        <div class="card-autor">18% dos menores sofreram abuso com imagens online</div>
+        <div class="card-obra">Relatório de Desenvolvimento Humano · 2025</div>
+        <div class="card-desc">Na América Latina e Caribe, cerca de 18% dos menores sofreram abuso com imagens online e 12% receberam solicitações sexuais pela internet em 2024. No Brasil, a SaferNet registrou 71.867 denúncias de exploração infanto-juvenil em 2023 — aumento de 70% em relação ao ano anterior.</div>
+        <div class="card-links">
+          <a class="card-link" href="https://www.migalhas.com.br/coluna/migalhas-de-responsabilidade-civil/442134/oversharenting-e-responsabilidade-civil-dos-pais-nas-redes-sociais" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+            Migalhas · Out. 2025
+          </a>
+        </div>
+      </div>
+
+      <div class="card card-dado">
+        <span class="card-tipo tipo-dado">🧠 Psicologia · IBDFAM</span>
+        <div class="card-autor">Impactos psicológicos da superexposição infantil</div>
+        <div class="card-obra">IBDFAM — Instituto Brasileiro de Direito de Família</div>
+        <div class="card-desc">A exposição excessiva e irrestrita de imagens de crianças pode gerar impactos psicológicos graves, incluindo ansiedade excessiva, transtornos alimentares, insegurança, distorção da autoimagem e depressão. Essa é a geração mais observada em toda a história.</div>
+        <div class="card-citacao">A restrição ou apagamento da privacidade e a excessiva exposição afetam a imagem que a criança precisa construir de si, podendo levar a quadros de ansiedade excessiva, transtornos alimentares, insegurança e distorção da imagem, e ainda depressão.</div>
+        <div class="card-links">
+          <a class="card-link" href="https://ibdfam.org.br/noticias/11416/Sharenting:+especialistas+avaliam+os+riscos+da+exposi%C3%A7%C3%A3o+infantil+nas+redes+sociais" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+            IBDFAM
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ══════════ SEÇÃO 4 — ÓRGÃOS OFICIAIS ══════════ -->
+  <section class="secao" id="orgaos">
+    <div class="secao-header">
+      <div class="secao-icone s2">🏛️</div>
+      <div>
+        <div class="secao-num">Seção 04</div>
+        <h2 class="secao-titulo">Órgãos Oficiais & Recomendações</h2>
+      </div>
+    </div>
+    <div class="cards-grid">
+
+      <div class="card">
+        <span class="card-tipo tipo-org">🏛️ Ministério Público</span>
+        <div class="card-autor">MP/MS — Recomendação Oficial</div>
+        <div class="card-obra">Proteção à Infância — Agosto de 2025</div>
+        <div class="card-desc">O Ministério Público do Mato Grosso do Sul emitiu recomendação formal orientando órgãos públicos a não divulgar imagens de crianças sem consentimento formal, e mesmo com consentimento a limitá-las a finalidades exclusivamente pedagógicas.</div>
+        <div class="card-citacao">Mesmo quando houver autorização, a utilização da imagem deve ter finalidades exclusivamente pedagógicas. Não se admite o uso para promoção institucional, pois isso expõe a criança a riscos desnecessários.</div>
+        <div class="card-links">
+          <a class="card-link" href="https://www.mpms.mp.br/noticias/2025/08/protecao-a-infancia-mpms-recomenda-restricao-a-divulgacao-de-imagens-de-criancas-por-orgaos-publicos-em-bela-vista" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+            MP/MS — Recomendação
+          </a>
+        </div>
+      </div>
+
+      <div class="card">
+        <span class="card-tipo tipo-org">🏛️ Ministério Público</span>
+        <div class="card-autor">MP/ES — Alerta sobre Sharenting</div>
+        <div class="card-obra">Promotoria de Justiça Valéria Barros Duarte de Morais · Jan. 2026</div>
+        <div class="card-desc">O MP do Espírito Santo alerta que a exposição indevida de crianças pode ser interpretada como negligência ou abuso, atraindo a intervenção do Ministério Público. Preservar o sigilo não é apenas um dever ético — é uma obrigação legal.</div>
+        <div class="card-citacao">A proteção integral de crianças e adolescentes é um dever compartilhado entre família, sociedade e Estado.</div>
+        <div class="card-links">
+          <a class="card-link" href="https://mpes.mp.br/noticias/2026/01/14/sharenting-os-limites-e-riscos-da-exposicao-infantil-nas-redes-sociais/" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+            MP/ES · Jan. 2026
+          </a>
+        </div>
+      </div>
+
+      <div class="card">
+        <span class="card-tipo tipo-org">🏥 Instituição de Saúde</span>
+        <div class="card-autor">Hospital Pequeno Príncipe</div>
+        <div class="card-obra">Sharenting: riscos da superexposição · Nov. 2025</div>
+        <div class="card-desc">Referência brasileira em saúde infantil, o hospital alerta para os riscos da superexposição de crianças nas redes sociais. Destaca que antigamente o orgulho era expresso por meio de álbuns fotográficos restritos ao círculo familiar — hoje a exposição é massiva e irrestrita.</div>
+        <div class="card-citacao">Toda criança tem direito à proteção da sua imagem, identidade e privacidade.</div>
+        <div class="card-links">
+          <a class="card-link" href="https://pequenoprincipe.org.br/noticia/sharenting-riscos-superexposicao-criancas-redes-sociais/" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+            Hospital Pequeno Príncipe
+          </a>
+        </div>
+      </div>
+
+      <div class="card">
+        <span class="card-tipo tipo-org">🌐 NIC.br</span>
+        <div class="card-autor">Comitê Gestor da Internet no Brasil</div>
+        <div class="card-obra">NIC.br — Sharenting e riscos nas redes sociais</div>
+        <div class="card-desc">Entidade que gerencia o domínio .br no Brasil alerta para os riscos da exposição infantil e destaca que há falta de educação digital no país: "As famílias e a sociedade não sabem dos riscos. Cabe ao Estado esse cuidado através da criação de regulamentações específicas."</div>
+        <div class="card-links">
+          <a class="card-link" href="https://nic.br/noticia/na-midia/i-sharenting-i-e-os-riscos-de-postar-fotos-de-criancas-nas-redes-sociais/" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+            NIC.br
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ══════════ SEÇÃO 5 — NA PRÁTICA ══════════ -->
+  <section class="secao" id="pratica">
+    <div class="secao-header">
+      <div class="secao-icone s5">🏫</div>
+      <div>
+        <div class="secao-num">Seção 05</div>
+        <h2 class="secao-titulo">LGPD na Prática Escolar</h2>
+      </div>
+    </div>
+    <div class="cards-grid">
+
+      <div class="card">
+        <span class="card-tipo tipo-artigo">📚 Análise Especializada</span>
+        <div class="card-autor">Professor Renato</div>
+        <div class="card-obra">LGPD/ECA e fotos de alunos: pode? · Out. 2025</div>
+        <div class="card-desc">Análise completa sobre o que professores e gestores escolares precisam saber sobre uso de imagem. Detalha como deve ser estruturado um termo de autorização válido perante a LGPD e o ECA, com exemplos de cláusulas corretas e incorretas.</div>
+        <div class="card-citacao">A sanção mais grave não é a multa — é a quebra de confiança. Uma escola que não demonstra cuidado com a imagem e os dados dos seus alunos perde sua credibilidade.</div>
+        <div class="card-links">
+          <a class="card-link" href="https://professorrenato.com/lgpd-eca-e-fotos-de-alunos-pode/" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+            Professor Renato · Out. 2025
+          </a>
+        </div>
+      </div>
+
+      <div class="card">
+        <span class="card-tipo tipo-artigo">⚖️ Especialista em Direito Educacional</span>
+        <div class="card-autor">Luiz Tôrres Neto</div>
+        <div class="card-obra">Advogado — Ferreira Tôrres Advogados · Fev. 2026</div>
+        <div class="card-desc">Especialista em Direito Educacional e Canônico alerta sobre a importância de protocolos internos nas escolas. A voz do aluno também é dado pessoal protegido — gravações e transmissões ao vivo exigem autorização específica, mesmo que o rosto não apareça.</div>
+        <div class="card-citacao">A escola precisa deixar claro que autorização de uso de imagem não é genérica, nem automática. Treinar professores, definir protocolos e orientar sobre o que pode ou não ser publicado é uma medida de proteção jurídica que evita processos, preserva o aluno e protege a própria instituição.</div>
+        <div class="card-links">
+          <a class="card-link" href="https://infonewss.com/professor-nao-pode-publicar-imagem-ou-voz-de-aluno-sem-autorizacao-alerta-especialista/" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+            Info Newss · Fev. 2026
+          </a>
+        </div>
+      </div>
+
+      <div class="card">
+        <span class="card-tipo tipo-artigo">🔐 Segurança de Dados</span>
+        <div class="card-autor">Macher Tecnologia</div>
+        <div class="card-obra">LGPD para Escolas e Instituições de Ensino</div>
+        <div class="card-desc">Guia técnico sobre como escolas devem tratar dados de alunos conforme a LGPD. Aborda coleta de biometria em catracas, aplicativos de comunicação escola-família, contratos com fornecedores digitais e responsabilidade solidária entre escola e professor.</div>
+        <div class="card-links">
+          <a class="card-link" href="https://www.machertecnologia.com.br/lgpd-escolas-instituicoes-ensino/" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+            Macher Tecnologia
+          </a>
+        </div>
+      </div>
+
+      <div class="card">
+        <span class="card-tipo tipo-artigo">📖 Análise Jurídica</span>
+        <div class="card-autor">Koehne — Conjur</div>
+        <div class="card-obra">A LGPD e as Escolas · Fev. 2021</div>
+        <div class="card-desc">Análise jurídica aprofundada sobre como a LGPD se aplica ao cotidiano escolar: contratos de matrícula, fotos de alunos em redes sociais e grupos de WhatsApp por professores, aulas gravadas em plataformas digitais e responsabilidade da escola como controladora de dados.</div>
+        <div class="card-links">
+          <a class="card-link" href="https://www.conjur.com.br/2021-fev-26/koehne-lei-geral-protecao-dados-pessoais-escolas/" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+            Conjur · Fev. 2021
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ══════════ SEÇÃO 6 — ARTIGOS ══════════ -->
+  <section class="secao" id="artigos">
+    <div class="secao-header">
+      <div class="secao-icone s6">📰</div>
+      <div>
+        <div class="secao-num">Seção 06</div>
+        <h2 class="secao-titulo">Artigos, Pesquisas & Análises</h2>
+      </div>
+    </div>
+    <div class="cards-grid">
+
+      <div class="card">
+        <span class="card-tipo tipo-artigo">📰 Migalhas · Out. 2025</span>
+        <div class="card-autor">Oversharenting e Responsabilidade Civil</div>
+        <div class="card-obra">Migalhas de Responsabilidade Civil</div>
+        <div class="card-desc">Analisa o fenômeno do oversharenting (compartilhamento excessivo) e suas consequências jurídicas no Brasil. Apresenta dados do TIC Kids Online Brasil 2024 e discute responsabilidade civil dos pais e das instituições que publicam imagens de crianças.</div>
+        <div class="card-links">
+          <a class="card-link" href="https://www.migalhas.com.br/coluna/migalhas-de-responsabilidade-civil/442134/oversharenting-e-responsabilidade-civil-dos-pais-nas-redes-sociais" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+            Migalhas · Out. 2025
+          </a>
+        </div>
+      </div>
+
+      <div class="card">
+        <span class="card-tipo tipo-artigo">📰 Legale · Fev. 2026</span>
+        <div class="card-autor">Sharenting: Privacidade Infantil × Poder Familiar</div>
+        <div class="card-obra">Blog Jurídico Legale — Direito Digital</div>
+        <div class="card-desc">Debate aprofundado sobre o conflito entre o livre planejamento familiar (liberdade dos pais para postar) e o direito de personalidade da criança. Traz a doutrina jurídica mais recente sobre o tema e fundamenta que a imagem da criança não pertence aos pais.</div>
+        <div class="card-citacao">A imagem da criança não é uma extensão da propriedade dos pais; é um atributo da personalidade do próprio menor.</div>
+        <div class="card-links">
+          <a class="card-link" href="https://legale.com.br/blog/sharenting-privacidade-infantil-x-poder-familiar-e-lgpd/" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+            Legale · Fev. 2026
+          </a>
+        </div>
+      </div>
+
+      <div class="card">
+        <span class="card-tipo tipo-artigo">📰 Conjur · Nov. 2025</span>
+        <div class="card-autor">Sharenting e limites jurídicos da exposição infantil</div>
+        <div class="card-obra">Consultor Jurídico</div>
+        <div class="card-desc">Análise dos limites jurídicos do sharenting no Brasil, com referências à doutrina do IBDFAM e pesquisas de Direito Digital aplicado à proteção de crianças e adolescentes nas redes sociais.</div>
+        <div class="card-links">
+          <a class="card-link" href="https://www.conjur.com.br/2025-nov-21/sharenting-e-limites-juridicos-da-exposicao-infantil-nas-redes-sociais/" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+            Conjur · Nov. 2025
+          </a>
+        </div>
+      </div>
+
+      <div class="card">
+        <span class="card-tipo tipo-artigo">📰 Rádio Agência Nacional · 2026</span>
+        <div class="card-autor">Dia da Internet Segura — Riscos do Sharenting</div>
+        <div class="card-obra">Agência Brasil / EBC · Fev. 2026</div>
+        <div class="card-desc">Reportagem especial publicada no Dia da Internet Segura com entrevistas de especialistas sobre os riscos do sharenting e dados atualizados sobre exploração infantil online no Brasil em 2024.</div>
+        <div class="card-links">
+          <a class="card-link" href="https://agenciabrasil.ebc.com.br/radioagencia-nacional/geral/audio/2026-02/dia-da-internet-segura-alerta-para-riscos-do-sharenting" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+            Agência Brasil · Fev. 2026
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ══════════ SEÇÃO 7 — CONSENTIMENTO ══════════ -->
+  <section class="secao" id="consentimento">
+    <div class="secao-header">
+      <div class="secao-icone s7">📝</div>
+      <div>
+        <div class="secao-num">Seção 07</div>
+        <h2 class="secao-titulo">Modelos de Consentimento & Referências de Apoio</h2>
+      </div>
+    </div>
+    <div class="cards-grid">
+
+      <div class="card">
+        <span class="card-tipo tipo-org">📋 Modelo Real · São Paulo</span>
+        <div class="card-autor">Projeto AdoLêSer — SME/SP</div>
+        <div class="card-obra">Secretaria Municipal de Educação de São Paulo · 2019</div>
+        <div class="card-desc">Exemplo de termo de autorização de imagem usado por escola pública de São Paulo. Autoriza uso "em qualquer meio de comunicação para fins didáticos, de pesquisa e divulgação" — sem prazo definido e sem cláusula de revogação. Serve como exemplo do que NÃO deve ser feito conforme a LGPD.</div>
+        <div class="card-links">
+          <a class="card-link" href="https://educacao.sme.prefeitura.sp.gov.br/wp-content/uploads/2019/05/5959.pdf" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+            Ver modelo (PDF)
+          </a>
+        </div>
+      </div>
+
+      <div class="card">
+        <span class="card-tipo tipo-org">📋 Modelo Real · Bagé/RS</span>
+        <div class="card-autor">Escola Municipal de Bagé</div>
+        <div class="card-obra">Prefeitura Municipal de Bagé/RS</div>
+        <div class="card-desc">Outro exemplo de termo amplo: autoriza uso em "campanhas promocionais e institucionais em todo território nacional" sem prazo ou cláusula de revogação. Exemplo de modelo que contraria os princípios da LGPD e deve ser revisado.</div>
+        <div class="card-links">
+          <a class="card-link" href="http://www.bage.rs.gov.br/termo-de-autorizacao-de-uso-de-imagem-infantil-docx.pdf" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+            Ver modelo (PDF)
+          </a>
+        </div>
+      </div>
+
+      <div class="card">
+        <span class="card-tipo tipo-org">📊 Jurisprudência Completa</span>
+        <div class="card-autor">Jusbrasil — Banco de Decisões</div>
+        <div class="card-obra">Busca: "utilização de imagem de aluno"</div>
+        <div class="card-desc">Base de dados com todas as decisões judiciais brasileiras envolvendo uso indevido de imagem de alunos. Inclui casos de escolas públicas e privadas, professores e funcionários. Essencial para consulta de precedentes e valores de indenização.</div>
+        <div class="card-links">
+          <a class="card-link" href="https://www.jusbrasil.com.br/jurisprudencia/busca?q=utiliza%C3%A7%C3%A3o+de+imagem+de+aluno" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+            Pesquisar no Jusbrasil
+          </a>
+        </div>
+      </div>
+
+      <div class="card">
+        <span class="card-tipo tipo-artigo">📖 MP/RJ — Pesquisa Acadêmica</span>
+        <div class="card-autor">Lúcia Maria Teixeira Ferreira</div>
+        <div class="card-obra">Superexposição de dados e imagem de crianças na internet — MP/RJ</div>
+        <div class="card-desc">Estudo acadêmico do Ministério Público do Rio de Janeiro sobre a prática do sharenting e seus reflexos jurídicos. Discute a coleta de fotos de crianças em bases de dados de reconhecimento facial sem autorização.</div>
+        <div class="card-links">
+          <a class="card-link" href="https://www.mprj.mp.br/documents/20184/2026467/Lucia_Maria_Teixeira_Ferreira.pdf" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+            MP/RJ — Pesquisa (PDF)
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+</main>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo">Imagem & LGPD na Escola</div>
+    <div class="footer-prof">Palestra educacional — Professores e Equipe Escolar</div>
+    <div class="footer-year">2025</div>
+    <p class="footer-frase">
+      <strong>"Cuidar da imagem de um aluno</strong><br>
+      é cuidar da dignidade dele."
+    </p>
+  </div>
+</footer>
+
+</body>
+</html>
